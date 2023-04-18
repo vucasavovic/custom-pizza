@@ -1,0 +1,1 @@
+This is a small fast food ordering app VUE.js project.

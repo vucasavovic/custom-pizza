@@ -1,10 +1,15 @@
  <template>
-  <main class="view">
+
+  <BasicLayout>
+    <template v-slot:header>
+
+    </template>
+    <template v-slot:body>
       <section class="banner">
         <span>
           <article>
-            <img class="title" src="/images/custom_pizza.svg" alt="">
-            <p class="body-copy">Make a creative pizza with your favourite ingredients!</p>
+            <img class="title z2" src="/images/custom_pizza.svg" alt="">
+            <p class="body-copy z2">Make a creative pizza with your favourite ingredients!</p>
             <Button  @click="navigate('/disclaimer')" :active="true" theme="yellow" text="Order now"/>
           </article>
         </span>
@@ -12,11 +17,16 @@
           <img src="/images/banners/pizza_1.png" alt="Pizza">
         </span>
       </section>
-  
-  </main>
+    </template>
+    <template v-slot:footer>
+      
+    </template>
+  </BasicLayout>
+ 
 </template>
 
 <script setup>
+import BasicLayout from '../components/BasicLayout.vue';
 import {useNavigator} from '@/composables/navigator'
 import Button from '../components/Button.vue';
  
@@ -60,12 +70,14 @@ const {navigate} = useNavigator();
     gap: 1rem;
 
     & .title{
+      position: relative;
       width:min-content;
       max-height: 160px;
       height: 100%;
     }
 
     >.body-copy{
+      position: relative;
       max-width: 500px;
     }
  
@@ -75,5 +87,7 @@ const {navigate} = useNavigator();
   }
   
 }
-  
+.z2{
+  z-index: 2;
+}
 </style>

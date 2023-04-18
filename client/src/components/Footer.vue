@@ -20,7 +20,7 @@
         </section>
 
         <div class="signature">
-            <RouterLink to="">Disclaimer</RouterLink>
+            <RouterLink to="/disclaimer">Disclaimer</RouterLink>
         </div>
     </div>
 </template>

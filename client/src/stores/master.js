@@ -1,12 +1,8 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { useRouter } from 'vue-router';
-
-
-
+ 
 export const useMasterStore = defineStore('master', () => {
   const currency = "$";
-
   const availableIngredients = [
     {id:1,name:'Tomato sauce',type:'Sauce',price:0.2},
     {id:2,name:'Cheddar',type:'Cheese',price:1},
@@ -30,20 +26,9 @@ export const useMasterStore = defineStore('master', () => {
     {id:20,name:'Corn',type:'Veggies',price:0.3},  
  ]
  
-  const user = ref({
-    firstname:'',
-    lastname:'',
-    phone:'',
-    address:'',
-
-    cardNumber:'',
-    expiryDate:'',
-    ccv:''
-
-  });
  
   const mobileMenuVisible = ref(false);
-  
+
   const displayMobileMenu = function(){
     mobileMenuVisible.value = true;
   }
@@ -51,5 +36,5 @@ export const useMasterStore = defineStore('master', () => {
     mobileMenuVisible.value = false;
   }
  
-  return {availableIngredients, user , mobileMenuVisible,displayMobileMenu,hideMobileMenu}
+  return {availableIngredients, mobileMenuVisible,displayMobileMenu,hideMobileMenu}
 })

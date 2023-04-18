@@ -20,7 +20,7 @@
     gap: 0.25rem;
     line-height: 0.84;
     font-weight: inherit; 
-  
+    width: fit-content;
     font-weight: 500;
     padding: 0.2rem;
 }

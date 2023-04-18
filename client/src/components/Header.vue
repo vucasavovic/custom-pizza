@@ -23,7 +23,7 @@ const masterStore = useMasterStore();
    position: fixed;
    z-index: 90;
    top: 0;
-  
+   padding: 0 $page-padding;
    height: $header-height;
    width: 100%;
    max-width: $app-max-width;

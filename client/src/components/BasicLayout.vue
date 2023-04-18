@@ -1,23 +1,33 @@
 <template>
     <main class="view-template">
-        <div class="header">
+        <section v-if="headerHasChildren" ref="header" class="header">
             <slot name="header"></slot>
-        </div>
-        <div class="body">
+        </section>
+        <section class="body">
             <slot name="body"></slot>
-        </div>
-        <div class="footer">
+        </section>
+        <section class="footer">
             <slot name="footer"></slot>
-        </div>
+        </section>
     </main>
 </template>
 
 <script   setup>
+import { computed } from '@vue/reactivity';
+import { ref } from 'vue';
+ 
+const header = ref(null);
 
+const headerHasChildren = computed(()=>{
+   return  header.value?.children.length > 0 ? true : false;
+})
+
+ 
 </script>
 
 <style lang="scss" scoped>
 .view-template{
+    padding: 0 $page-padding;
     padding-top:calc($header-height + 4vh);
    display: flex;
    flex-direction: column;

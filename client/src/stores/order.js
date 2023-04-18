@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import { Pizza, Ingredient,PizzaSize} from '../composables/objects';
 import { ref, computed } from 'vue'
-
+import { useMath } from '@/composables/math'
 export const useCustomerOrderStore = defineStore('customet order', () => {
 
+   const {roundFl} = useMath();
       
      let allProducts = ref([]);
      let currentPizza = ref(new Pizza())
@@ -13,7 +14,7 @@ export const useCustomerOrderStore = defineStore('customet order', () => {
          allProducts.value.forEach(product => {
                tot +=  product.price();
          });
-         return tot;
+         return  roundFl(tot,2);
      }
 
      const deletePizza = function(pizza){

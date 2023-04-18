@@ -2,9 +2,9 @@
     <main class="view">
         <div class="disclaimer">
             <article>
-                <h1 class="title">Disclaimer</h1>
+                <h1 class="title">Attention</h1>
                 <p class="body-copy">This is not a real production app. You can not order any product, nor be chargerd, and we will not  use any of your data in any way. This is a mockup app, for the pusrpose of promoting web development skills.</p>
-                <Button @click="navigate('/pizza_customizer')" :active="true" theme="green" text="Continue"/>
+                <Button @click="navigate('/pizza_customizer')" :active="true" theme="yellow" text="Continue"/>
             </article>
         </div>
     </main>

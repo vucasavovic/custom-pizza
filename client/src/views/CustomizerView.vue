@@ -2,9 +2,11 @@
 
     <BasicLayout>
         <template v-slot:header>
-
+                 
         </template>
         <template v-slot:body>
+
+            
             <div class="section size-section ">
                 <h3 class="title">Size</h3>
 
@@ -17,7 +19,7 @@
             </div>
 
             <div class="section  cuts-section">
-                <h3 class="title">Cuts</h3>
+                <h3 class="title">Slices</h3>
                  
                 <div class="body button-row">
                     <RadioButton @click="customerOrder.numOfCuts(PizzaCuts.Four)" :active="customerOrder.currentPizza.cuts == PizzaCuts.Four" icon="4_cuts" text="Pizza 4 cuts"/>
@@ -34,7 +36,7 @@
             </div>
 
             <div class="section">
-                <h3 class="title">Cheese</h3>
+                <h3 class="title">Cheeses</h3>
                  <div class="body button-col">
                     <IngredientButton @click="customerOrder.selectIngredient(ingredient)" v-for="ingredient in cheese" :key="ingredient.id" :active="selectedIngredient(ingredient.id)" :text="ingredient.name" :price="ingredient.price" /> 
                  </div>
@@ -53,9 +55,6 @@
                     <IngredientButton @click="customerOrder.selectIngredient(ingredient)" v-for="ingredient in veggies" :key="ingredient.id" :active="selectedIngredient(ingredient.id)" :text="ingredient.name" :price="ingredient.price" /> 
                  </div>
             </div>
- 
-        
-
         </template>
         <template v-slot:footer>
             <Button @click="onFinishCustomizing" :active="true" theme="yellow" text="Next"/>
@@ -69,6 +68,7 @@ import { useNavigator } from '@/composables/navigator';
 import { PizzaSize, PizzaCuts, Pizza } from '../composables/objects';
 import { useMasterStore } from '../stores/master';
 import { useCustomerOrderStore } from '../stores/order';
+import { useWarningStore } from '../stores/warning';
 import { computed, onMounted } from 'vue';
 import { isArray } from '@vue/shared';
 
@@ -81,6 +81,7 @@ import IngredientButton from '@/components/IngredientButton.vue'
 const {navigate} = useNavigator();
 const customerOrder = useCustomerOrderStore();
 const masterStore = useMasterStore();
+const warningStore = useWarningStore();
 
 const orderComplete = computed(()=>{
     let completed = true;
@@ -101,6 +102,8 @@ const orderComplete = computed(()=>{
 const onFinishCustomizing = function(){
     if(customerOrder.savePizza()){
          navigate('/cart')
+    }else{
+        warningStore.display('Pick a size, number of slices and at least one ingredient!','warning',2.5)
     }
 }
 
@@ -131,17 +134,6 @@ onMounted(()=>{
 </script>
 
 <style lang="scss" scoped>
-
-.customizer-view{
-    width: 100%;
-    
-    margin: 0 auto;
-    padding-bottom: 3rem;
-
-    >button{
-        margin-top: auto;
-    }
-}
  
 .section{
     width: 100%;
@@ -153,6 +145,10 @@ onMounted(()=>{
     }
     >.body{
         margin-top:2rem;
+    }
+
+    &:nth-of-type(n+2){
+        margin-top: 3rem;
     }
 }
 .button-row{

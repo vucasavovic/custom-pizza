@@ -1,4 +1,7 @@
  <template>
+
+  <Warning/> 
+
   <div :class="['transition',{active:masterStore.transitionVisible}]">
     <img src="/images/pizza_loader.gif" alt="Brand logo">
   </div>
@@ -16,7 +19,7 @@ import Header from './components/Header.vue';
  
 import Footer from './components/Footer.vue';
 import MobileMenu from './components/Menu.vue';
-
+import Warning from './components/Warning.vue';
  
 const route = useRoute();
 

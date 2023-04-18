@@ -13,7 +13,7 @@
                 </nav>
             </section>
         <footer>
-            <RouterLink to="">Disclaimer</RouterLink>
+            <RouterLink to="" @click="navigate('/disclaimer')">Disclaimer</RouterLink>
         </footer>
     </div>
 </template>

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+$page-padding:1rem;
+$app-max-width:600px;
+$header-height:56px;
+$main-radius:6px;
+//Colors
+
+$green:#008F6C;
+$red:#FF0000;
+$yellow:#FFD337;
+$black-4pct:#F5F5F5;
+$border-color:rgb(190, 190, 190);
+
+
+@mixin global-padd{
+    padding-left: $page-padding;
+    padding-right: $page-padding;
+}
+ 

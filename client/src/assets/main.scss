@@ -1,0 +1,113 @@
+ 
+*{
+  margin:0;
+  padding:0;
+  border:0;
+  user-select:none;
+  box-sizing:border-box;
+  text-decoration:none;
+}
+ 
+ 
+#app {
+  position: relative;
+  overflow-x: hidden;
+  width: 100vw;
+  max-width: $app-max-width;
+  min-height: 100vh;
+  margin: 0 auto;
+  font-family: 'Inter',sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+ 
+  display: flex;
+  flex-direction: column;
+
+
+   & .footer{
+    margin-top: auto;
+  }
+}
+
+
+img{
+  display: block;
+}
+
+.img-full{
+  width: 100%;
+}
+
+button,input,textarea{
+  cursor: pointer;
+  border-radius: 6px;
+}
+textarea{
+  resize: none;
+  min-height: 200px;
+  width: 100%;
+}
+
+button{
+   
+  display: block;
+  background-color: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+}
+ 
+
+a{
+  cursor: pointer;
+  color: inherit;
+  font-weight: inherit;
+  font-weight: 500;
+}
+
+.body-copy{
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.view{
+  position: relative;
+  top: 0;
+  padding-top:calc(2rem + 54px); 
+ 
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 2rem;
+
+  >.navigation{
+    margin-top: auto;
+    padding-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    >button{
+        width: 100%;
+    }
+}
+
+}
+
+.green{
+  background-color: $green;
+  color: white;
+}
+.red{
+  background-color: $red;
+}
+.yellow{
+    background-color: $yellow;
+}
+.lightgrey{
+  background-color: $black-4pct;
+}
+ 
+
+ 

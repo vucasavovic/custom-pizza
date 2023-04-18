@@ -1,1 +1,12 @@
-This is a small fast food ordering app VUE.js project.
+## Order pizza online
+
+
+### Install and run
+```sh 
+cd client
+npm install
+npm run dev
+
+```
+
+

@@ -6,11 +6,11 @@
 
         <template v-slot:body>
             <form action="">
-                <input class="input" type="text" id="" placeholder="Name" v-model="user.name">
-                <input class="input" type="text"  id="" placeholder="Delivery address" v-model="user.address">
-                <input class="input" type="text"  id="" placeholder="Contact phone" v-model="user.phone">
-                <textarea class="input" name="" id=""  placeholder="Notes for driver" v-model="user.notes"></textarea>
-
+                 <Input label="Name" :validate="{type:'name',message:'Firstname or nickname, no special chatracters or space'}" v-model="user.name"/>
+                 <Input label="Mobile phone" :validate="{type:'phone',message:'Firstname or nickname, no special chatracters or space'}" v-model="user.phone"/>
+                 <Input label="Delivery address" :validate="{type:'address',message:'Firstname or nickname, no special chatracters or space'}" v-model="user.address"/>
+                 <Input type="textarea" :validate="{type:'text',message:'Firstname or nickname, no special chatracters or space'}" label="Driver instructions" v-model="user.notes"/>
+ 
                 <p>Payment card details</p>
 
                 <div class="payment-card-input">
@@ -28,7 +28,7 @@
 
         <template v-slot:footer>
             <Total currency="$" :netAmount="customerOrder.total()"/>
-            <Button text="Pay" theme="yellow" :active="true" /> 
+            <Button @click="submitForm()" text="Pay" theme="yellow" :active="true" /> 
         </template>
 
     </BasicLayout>
@@ -39,14 +39,18 @@
 </template>
 
 <script setup>
+ 
 import { ref } from 'vue';
+import { useCustomerOrderStore } from '../stores/order';
+
+import Input from '../components/Input.vue';
+import Button from '../components/Button.vue';
 import Total from '../components/Total.vue';
 import BasicLayout from '../components/BasicLayout.vue';
-import Button from '../components/Button.vue';
-import { useCustomerOrderStore } from '../stores/order';
+
 const customerOrder = useCustomerOrderStore(); 
 
-
+ 
 const user = ref({
     name:'',
     phone:'',
@@ -59,6 +63,11 @@ const paymentCard  = ref({
    expiryDate:{month:0,year:0},
    ccv:''
 })
+
+ 
+const submitForm = function(){
+    console.log('submitting')
+}
  
 
 </script>
@@ -68,20 +77,9 @@ const paymentCard  = ref({
 form{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
 }
-
-
-.input{
-   
-    padding: 8px 1rem;
-    border: 1px solid grey;
-    color: grey;
-    &:focus{
-        outline: none;
-    }
-}
-
+ 
 .payment-card-input{
     border: 1px solid grey;
     border-radius: $main-radius;
